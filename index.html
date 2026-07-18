@@ -39,7 +39,7 @@
   <div style="font-size:12.5px;color:var(--faint);margin-top:12px">Free during the Colorado beta. No credit card.</div>
 </div></header>
 <section><div class="wrap"><div class="stats">
-  <div class="s"><b><em>2</em></b><span>herds located, first field weekend</span></div>
+  <div class="s"><b><em><span class="tick" data-to="2">0</span></em></b><span>herds located, and counting</span></div>
   <div class="s"><b><em>All</em></b><span>Colorado elk units, one login</span></div>
   <div class="s"><b><em>$0</em></b><span>during the public beta</span></div>
 </div></div></section>
@@ -66,15 +66,28 @@
   </div>
 </div></section>
 
-<section><div class="wrap"><div class="split">
-  <div class="photo"><img src="field-test.jpg" alt="Jake and Jon in Colorado the morning they tested ScoutIQ"></div>
-  <div>
-    <div class="eyebrow" style="text-align:left">Field tested</div>
-    <h2 style="font-size:26px;font-weight:800;margin-bottom:12px">This isn't stock photography.</h2>
-    <p style="color:var(--muted);font-size:15px;line-height:1.7">First morning ScoutIQ ran in the field, it called the drainage and two herds showed. The tool earns its spot in your pack. It is early, it will not always be right, and every field report you send makes it sharper.</p>
-    <div style="margin-top:18px"><a class="btn ghost" href="about.html">Read our story</a></div>
+<section><div class="wrap">
+  <div class="eyebrow">Inside the app</div>
+  <h2 class="h2c">The map you know, plus the forecast</h2>
+  <p class="lede">You still get the map, layers, and land ownership you expect. ScoutIQ adds where to start on top.</p>
+  <div class="shots"><div class="shots-row">
+    <figure class="phone"><div class="scr"><img src="shot-elk.jpg" alt="ScoutIQ elk concentration and wind view"></div><figcaption>Elk concentration</figcaption></figure>
+    <figure class="phone"><div class="scr"><img src="shot-terrain.jpg" alt="ScoutIQ 3D terrain view"></div><figcaption>3D terrain</figcaption></figure>
+    <figure class="phone"><div class="scr"><img src="shot-elev.jpg" alt="ScoutIQ elevation view"></div><figcaption>Elevation</figcaption></figure>
+    <figure class="phone"><div class="scr"><img src="shot-draw.jpg" alt="ScoutIQ unit planner with draw and leftover odds"></div><figcaption>Draw + leftover odds</figcaption></figure>
+  </div></div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow">From the field</div>
+  <h2 class="h2c">Real hunts. Real country.</h2>
+  <p class="lede">This isn't stock photography. First morning ScoutIQ ran in the field, it called the drainage and two herds showed. More coming as the beta grows.</p>
+  <div class="ugc">
+    <img class="wide" src="field-wide.jpg" alt="Colorado elk country the morning ScoutIQ was field-tested">
+    <img src="field-test.jpg" alt="Jake and Jon in the field in Colorado">
+    <a class="ugc-invite" href="https://app.huntingscoutiq.com">Out with ScoutIQ?<span>Send us your hunt photos and field reports. We'll feature them here.</span></a>
   </div>
-</div></div></section>
+</div></section>
 
 <section><div class="wrap">
   <div class="eyebrow">Colorado units</div>
@@ -96,6 +109,18 @@
   <h2>Know where to start.</h2><p>Free during the Colorado beta. Create an account and pick your unit.</p>
   <a class="btn" href="https://app.huntingscoutiq.com">Get Access</a>
 </div></div></section>
+<script>
+(function(){
+  function run(el){
+    var to=parseInt(el.getAttribute('data-to'),10)||0, start=null, dur=1500;
+    function step(ts){ if(!start)start=ts; var p=Math.min((ts-start)/dur,1);
+      el.textContent=Math.floor(p*to); if(p<1)requestAnimationFrame(step); else el.textContent=to; }
+    requestAnimationFrame(step);
+  }
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){run(e.target);io.unobserve(e.target);}});});
+  document.querySelectorAll('.tick').forEach(function(el){io.observe(el);});
+})();
+</script>
 <footer><div class="in">
   <div class="brand"><span class="wm">SCOUT<em>IQ</em></span></div>
   <div class="flinks">
